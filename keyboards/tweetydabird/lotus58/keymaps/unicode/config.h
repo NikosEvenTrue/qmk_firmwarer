@@ -1,5 +1,5 @@
 #pragma once
 
-#define COMBO_COUNT 1
+#define COMBO_COUNT 2
 
 #define TAPPING_TERM 100
