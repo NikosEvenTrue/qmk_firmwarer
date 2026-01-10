@@ -34,9 +34,12 @@ enum custom_keycodes {
     NIKO_UC_PLUS,              // U+002B -> +
     NIKO_UC_LPRN,              // U+0028 -> (
     NIKO_UC_RPRN,              // U+0029 -> )
-    NIKO_CHNG_LNG,             // LGUI + Space (Change Language)
     NIKO_UC_LT,                // U+003C -> <
     NIKO_UC_GT,                // U+003E -> >
+
+    NIKO_CHNG_LNG,             // LGUI + Space (Change Language)
+    NIKO_WIN_T,                // Win + T
+    NIKO_WIN_B,                // Win + T
 };
 
 void tap_numpad_key(uint8_t digit) {
@@ -78,6 +81,12 @@ void send_alt_numpad_code(uint16_t code) {
     }
 
     unregister_code(KC_LALT);
+}
+
+void win_plus_symb(uint16_t code) {
+    register_code(KC_LGUI);
+    tap_code(code);
+    unregister_code(KC_LGUI);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -176,16 +185,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case NIKO_UC_RPRN:
                 send_alt_numpad_code(41);
                 return false;
-            case NIKO_CHNG_LNG:
-                register_code(KC_LGUI);
-                tap_code(KC_SPC);
-                unregister_code(KC_LGUI);
-                return false;
             case NIKO_UC_LT:
                 send_alt_numpad_code(60);
                 return false;
             case NIKO_UC_GT:
                 send_alt_numpad_code(62);
+                return false;
+            case NIKO_CHNG_LNG:
+                win_plus_symb(KC_SPC);
+                return false;
+            case NIKO_WIN_T:
+                win_plus_symb(KC_T);
+                return false;
+            case NIKO_WIN_B:
+                win_plus_symb(KC_B);
                 return false;
         }
     }
@@ -227,7 +240,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
         KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                             KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX,        XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT, KC_RSFT,
-                                            XXXXXXX, KC_SPC,  MO(1),   KC_LCTL,        KC_LALT,  MO(2),   NIKO_CHNG_LNG, XXXXXXX
+                                            KC_LGUI, KC_SPC,  MO(1),   KC_LCTL,        KC_LALT,  MO(2),   NIKO_CHNG_LNG, XXXXXXX
     ),
 
     /*
@@ -254,7 +267,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /*
-     * Layer 2 - Navigation & Funct1ion Keys
+* Layer 2 - Navigation & Funct1ion Keys
      * ,-----------------------------------------.                    ,-----------------------------------------.
      * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |XXXXXX|    |XXXXXX|  F7  |  F8  |  F9  | F10  | F11  | F12  |
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
@@ -271,17 +284,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [2] = LAYOUT(
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   XXXXXXX,        XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
         XXXXXXX, KC_1, KC_2, KC_3, KC_4, KC_5,                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
-        XXXXXXX, KC_6, KC_7, KC_8,  KC_9, KC_0,                          XXXXXXX, KC_LEFT, KC_RGHT, KC_DOWN, KC_UP,   XXXXXXX,
-        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, KC_HOME, KC_END,  KC_PGDN, KC_PGUP, KC_RSFT,
-                                            XXXXXXX, KC_SPC,  KC_LGUI,   KC_LCTL,        KC_LALT, XXXXXXX, KC_ENT,  XXXXXXX
+        XXXXXXX, KC_6, KC_7, KC_8,  KC_9, KC_0,                          KC_APP, KC_LEFT, KC_RGHT, KC_DOWN, KC_UP,   XXXXXXX,
+        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, NIKO_WIN_T, NIKO_WIN_B, XXXXXXX,        XXXXXXX, XXXXXXX, KC_HOME, KC_END,  KC_PGDN, KC_PGUP, KC_RSFT,
+                                            KC_LGUI, KC_SPC,  MO(3),   KC_LCTL,        KC_LALT, XXXXXXX, KC_ENT,  XXXXXXX
     ),
 
     /*
      * Layer 3 - Reset Layer
      * ,-----------------------------------------.                    ,-----------------------------------------.
-     * | BOOT |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|    |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX| BOOT |
+     * | BOOT |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|    |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
-     * |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|------|    |------|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|
+     * |XXXXXX|WIN+1 |XXXXXX|XXXXXX|XXXXXX|XXXXXX|------|    |------|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
      * |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|------|    |------|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|
      * |------+------+------+------+------+------|XXXXXX|    |XXXXXX|------+------+------+------+------+------|
@@ -292,7 +305,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                  `------------------------------------'           '------''---------------------------'
      */
     [3] = LAYOUT(
-        QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
+        QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
