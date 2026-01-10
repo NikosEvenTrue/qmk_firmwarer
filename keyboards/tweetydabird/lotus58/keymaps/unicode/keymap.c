@@ -246,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * Layer 1 - Symbols Layer
      * ,-----------------------------------------.                    ,-----------------------------------------.
-     * |XXXXXX|XXXXXX|XXXXXX|  №   |XXXXXX|XXXXXX|XXXXXX|    |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|
+     * | NUM  |XXXXXX|XXXXXX|  №   |XXXXXX|XXXXXX|XXXXXX|    |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
      * |XXXXXX|   !  |   @  |   #  |   $  |   %  |------|    |------|   ~  |   (  |   )  |   [  |   ]  |   >  |
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
@@ -259,7 +259,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                  `------------------------------------'           '------''---------------------------'
      */
     [1] = LAYOUT(
-        XXXXXXX, XXXXXXX,      XXXXXXX,      NIKO_UC_NUMO, XXXXXXX,      XXXXXXX,      XXXXXXX,        XXXXXXX, XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,       XXXXXXX,       XXXXXXX,
+        KC_NUM,  XXXXXXX,      XXXXXXX,      NIKO_UC_NUMO, XXXXXXX,      XXXXXXX,      XXXXXXX,        XXXXXXX, XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,       XXXXXXX,       XXXXXXX,
         XXXXXXX, NIKO_UC_EXLM, NIKO_UC_AT,   NIKO_UC_HASH, NIKO_UC_DLR,  NIKO_UC_PERC,                          NIKO_UC_TILD,      NIKO_UC_LPRN, NIKO_UC_RPRN, NIKO_UC_LBRC,  NIKO_UC_RBRC,  NIKO_UC_GT,
         XXXXXXX, NIKO_UC_PLUS, NIKO_UC_MINS, NIKO_UC_ASTR, NIKO_UC_SLSH, NIKO_UC_BSLS,                          NIKO_UC_GRV,  NIKO_UC_QUOT, NIKO_UC_DQUO, NIKO_UC_COLN,  NIKO_UC_SCLN,  NIKO_UC_LT,
         XXXXXXX, XXXXXXX,      NIKO_UC_PIPE, NIKO_UC_AMPR, NIKO_UC_UNDS, NIKO_UC_EQL,      KC_LALT,        XXXXXXX, NIKO_UC_LCBR, NIKO_UC_RCBR, NIKO_UC_COMM, NIKO_UC_DOT,   NIKO_UC_QUES,  XXXXXXX,
@@ -325,14 +325,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #ifdef OLED_ENABLE
 
 static void print_status_narrow(void) {
-    // Create OLED content
-    oled_write_P(PSTR("\n"), false);
-    oled_write_P(PSTR(""), false);
-    oled_write_P(PSTR("Lotus -58-"), false);
-    oled_write_P(PSTR("\n"), false);
-
-
-
     // Print current layer
     oled_write_P(PSTR("Layer"), false);
     switch (get_highest_layer(layer_state)) {
@@ -340,10 +332,10 @@ static void print_status_narrow(void) {
             oled_write_P(PSTR("-Base\n"), false);
             break;
         case 1:
-            oled_write_P(PSTR("-Num \n"), false);
+            oled_write_P(PSTR("-Symb\n"), false);
             break;
         case 2:
-            oled_write_P(PSTR("-Func\n"), false);
+            oled_write_P(PSTR("-Nav \n"), false);
             break;
         case 3:
             oled_write_P(PSTR("-Sys \n"), false);
@@ -354,14 +346,10 @@ static void print_status_narrow(void) {
 
     oled_write_P(PSTR("\n"), false);
     led_t led_usb_state = host_keyboard_led_state();
-    oled_write_ln_P(PSTR("Caps- lock"), led_usb_state.caps_lock);
+    oled_write_ln_P(PSTR("Caps  Lock"), led_usb_state.caps_lock);
 
-#ifdef AUTO_SHIFT_ENABLE
-    bool autoshift = get_autoshift_state();
-    oled_advance_page(true);
-    oled_write_P(PSTR("Auto-Shift"), autoshift);
-    oled_advance_page(true);
-#endif
+    oled_write_P(PSTR("\n"), false);
+    oled_write_P(PSTR("Num   Lock"), led_usb_state.num_lock);
 }
 
 // Function to "draw" large layer numbers on the slave OLED
