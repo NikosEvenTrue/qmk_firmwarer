@@ -221,26 +221,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * Layer 0 - Base Layer
      * ,-----------------------------------------.                    ,-----------------------------------------.
-     * |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |XXXXXX|    |XXXXXX|  F8  |  F9  |  F10 |  F11 |  F12 | Del  |
+     * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |XXXXXX|    |XXXXXX|  F7  |  F8  |  F9  | F10  | F11  | F12  |
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
-     * | ESC  |   Q  |   W  |  E   |   R  |   T  |------|    |------|   Y  |   U  |   I  |  O   |   P  | Bspc |
+     * |XXXXXX|   Q  |   W  |  E   |   R  |   T  |------|    |------|   Y  |   U  |   I  |  O   |   P  |XXXXXX|
      * |      |   й  |   ц  |  у  [ё]  к  |   е  |      |    |      |   н  |   г  |   ш  |  щ  [х]  з  |      |
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
-     * | Tab  |   A  |   S  |   D  |   F  |   G  |------|    |------|   H  |   J  |   K  |   L  |      | Entr |
+     * |XXXXXX|   A  |   S  |   D  |   F  |   G  |------|    |------|   H  |   J  |   K  |   L  |      |XXXXXX|
      * |      |   ф  |   ы  |   в  |   а  |   п  |      |    |      |   р  |   о  |   л  |   д  |   ж  |      |
-     * |------+------+------+------+------+------| LAlt |    |XXXXXX|------+------+------+------+------+------|
-     * |LShift|   Z  |   X  |   C  |   V  |   B  |------|    |------|   N  |  M   |      |      |      |RShift|
+     * |------+------+------+------+------+------|XXXXXX|    |XXXXXX|------+------+------+------+------+------|
+     * |XXXXXX|   Z  |   X  |   C  |   V  |   B  |------|    |------|   N  |  M   |      |      |      |XXXXXX|
      * |      |   я  |   ч  |   с  |   м  |   и  |      |    |      |   т  |  ь  [ъ]  б  |   ю  |   э  |      |
      * `----------------------------------------/       /     \      \-----------------------------------------'
-     *                 |XXXXXX| Space| MO(1) | LCtrl|  /      /       \      \ | LAlt | MO(2) | ChgLng |XXXXXX|
+     *                 |XXXXXX| Tab | MO(1) | Space |  /      /       \      \ | Bspc | MO(2) | Enter |XXXXXX|
      *                 `------------------------------------'           '------''---------------------------'
      */
     [0] = LAYOUT(
-        KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   XXXXXXX,        XXXXXXX, KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,
-        KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-        KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                             KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT,        KC_MPLY, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT, KC_RSFT,
-                                            XXXXXXX, KC_SPC,  MO(1),   KC_LCTL,        KC_LALT,  MO(2),   NIKO_CHNG_LNG, XXXXXXX
+        KC_F1, KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   XXXXXXX,        XXXXXXX, KC_F7, KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+        XXXXXXX,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    XXXXXXX,
+        XXXXXXX,  MT(MOD_LGUI, KC_A),    MT(MOD_LALT, KC_S),    MT(MOD_LCTL, KC_D),    MT(MOD_LSFT, KC_F),    KC_G,                             KC_H,    MT(MOD_RSFT, KC_J),    MT(MOD_LCTL, KC_K),    MT(MOD_LALT, KC_L),    MT(MOD_LGUI, KC_SCLN), XXXXXXX,
+        XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX,        KC_MPLY, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT, XXXXXXX,
+                                            XXXXXXX, KC_TAB,  MO(1),   KC_SPC,        KC_BSPC,  MO(2),   KC_ENT, XXXXXXX
     ),
 
     /*
@@ -251,19 +251,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |XXXXXX|   !  |   @  |   #  |   $  |   %  |------|    |------|   ~  |   (  |   )  |   [  |   ]  |   >  |
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
      * |XXXXXX|   +  |   -  |   *  |   /  |   \  |------|    |------|   `  |   '  |   "  |   :  |   ;  |   <  |
-     * |------+------+------+------+------+------| LAlt |    |XXXXXX|------+------+------+------+------+------|
+     * |------+------+------+------+------+------|XXXXXX|    |XXXXXX|------+------+------+------+------+------|
      * |XXXXXX|XXXXXX|   |  |   &  |   _  |   =  |------|    |------|   {  |   }  |   ,  |   .  |   ?  |XXXXXX|
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *                  |XXXXXX|XXXXXX|XXXXXX|XXXXXX| /       /       \      \ | CAPS | MO(3)| XXXXXX |XXXXXX|
-     *                  |      |      |      |      |/       /         \      \|      |      |        |      |
+     *                  |XXXXXX|XXXXXX|XXXXXX|XXXXXX| /       /       \      \ | DEL  | CAPS | ChngLng |XXXXXX|
+     *                  |      |      |      |      |/       /         \      \|      |      |         |      |
      *                  `------------------------------------'           '------''---------------------------'
      */
     [1] = LAYOUT(
         KC_NUM,  XXXXXXX,      XXXXXXX,      NIKO_UC_NUMO, XXXXXXX,      XXXXXXX,      XXXXXXX,        XXXXXXX, XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,       XXXXXXX,       XXXXXXX,
         XXXXXXX, NIKO_UC_EXLM, NIKO_UC_AT,   NIKO_UC_HASH, NIKO_UC_DLR,  NIKO_UC_PERC,                          NIKO_UC_TILD,      NIKO_UC_LPRN, NIKO_UC_RPRN, NIKO_UC_LBRC,  NIKO_UC_RBRC,  NIKO_UC_GT,
         XXXXXXX, NIKO_UC_PLUS, NIKO_UC_MINS, NIKO_UC_ASTR, NIKO_UC_SLSH, NIKO_UC_BSLS,                          NIKO_UC_GRV,  NIKO_UC_QUOT, NIKO_UC_DQUO, NIKO_UC_COLN,  NIKO_UC_SCLN,  NIKO_UC_LT,
-        XXXXXXX, XXXXXXX,      NIKO_UC_PIPE, NIKO_UC_AMPR, NIKO_UC_UNDS, NIKO_UC_EQL,      KC_LALT,        XXXXXXX, NIKO_UC_LCBR, NIKO_UC_RCBR, NIKO_UC_COMM, NIKO_UC_DOT,   NIKO_UC_QUES,  XXXXXXX,
-                                            XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                   KC_CAPS,      MO(3),   XXXXXXX,      XXXXXXX
+        XXXXXXX, XXXXXXX,      NIKO_UC_PIPE, NIKO_UC_AMPR, NIKO_UC_UNDS, NIKO_UC_EQL,      XXXXXXX,        XXXXXXX, NIKO_UC_LCBR, NIKO_UC_RCBR, NIKO_UC_COMM, NIKO_UC_DOT,   NIKO_UC_QUES,  XXXXXXX,
+                                            XXXXXXX,      XXXXXXX,      XXXXXXX,   XXXXXXX,                   KC_DEL, KC_CAPS,   NIKO_CHNG_LNG,      XXXXXXX
     ),
 
     /*
@@ -271,22 +271,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------.                    ,-----------------------------------------.
      * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |XXXXXX|    |XXXXXX|  F7  |  F8  |  F9  | F10  | F11  | F12  |
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
-     * |XXXXXX|  1   |  2   |  3   |  4   |  5   |------|    |------|  6   |  7   |  8   |  9   |  0   | Bspc |
+     * |XXXXXX|  1   |  2   |  3   |  4   |  5   |------|    |------|  6   |  7   |  8   |  9   |  0   |XXXXXX|
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
      * |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|------|    |------|XXXXXX| Left | Right| Down |  Up  |XXXXXX|
-     * |------+------+------+------+------+------| LAlt |    |XXXXXX|------+------+------+------+------+------|
-     * |LShift|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|------|    |------|XXXXXX| Home | End  | PgDn | PgUp |RShift|
+     * |------+------+------+------+------+------|XXXXXX|    |XXXXXX|------+------+------+------+------+------|
+     * |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|------|    |------|XXXXXX| Home | End  | PgDn | PgUp |XXXXXX|
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *                  |XXXXXX| Space| MO(3)| LGUI | /       /       \      \ | LAlt |XXXXXX| Enter|XXXXXX|
+     *                  |XXXXXX| Esc  | MO(3)| Space| /       /       \      \ |XXXXXX|XXXXXX|XXXXXX|XXXXXX|
      *                  |      |      |      |      |/       /         \      \|      |      |      |      |
      *                  `------------------------------------'           '------''---------------------------'
      */
     [2] = LAYOUT(
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   XXXXXXX,        XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-        XXXXXXX, KC_1, KC_2, KC_3, KC_4, KC_5,                          KC_6, KC_7, KC_8,  KC_9, KC_0,  KC_BSPC,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,                          KC_APP, KC_LEFT, KC_RGHT, KC_DOWN, KC_UP,   XXXXXXX,
-        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, NIKO_WIN_T, NIKO_WIN_B, KC_LALT,        XXXXXXX, XXXXXXX, KC_HOME, KC_END,  KC_PGDN, KC_PGUP, KC_RSFT,
-                                            XXXXXXX, KC_SPC,  KC_LGUI,   KC_LCTL,        KC_LALT, XXXXXXX, KC_ENT,  XXXXXXX
+        XXXXXXX, KC_1, KC_2, KC_3, KC_4, KC_5,                          KC_6, KC_7, KC_8,  KC_9, KC_0,  XXXXXXX,
+        XXXXXXX, MT(MOD_LGUI, XXXXXXX), MT(MOD_LALT, XXXXXXX), MT(MOD_LCTL, XXXXXXX),  MT(MOD_LSFT, XXXXXXX), XXXXXXX,                          KC_APP, MT(MOD_RSFT, KC_LEFT), MT(MOD_LCTL, KC_RGHT), MT(MOD_LALT, KC_DOWN), MT(MOD_LGUI, KC_UP),   XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NIKO_WIN_T, NIKO_WIN_B, XXXXXXX,        XXXXXXX, XXXXXXX, KC_HOME, KC_END,  KC_PGDN, KC_PGUP, XXXXXXX,
+                                            XXXXXXX, KC_ESC,  MO(3),   KC_SPC,        XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX
     ),
 
     /*
