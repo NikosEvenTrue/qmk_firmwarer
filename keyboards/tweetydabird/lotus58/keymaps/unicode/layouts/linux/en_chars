@@ -43,7 +43,7 @@ xkb_symbols "basic" {
     key <AC07> { [ j,            J,           apostrophe,   NoSymbol     ] };
     key <AC08> { [ k,            K,           quotedbl,     NoSymbol     ] };
     key <AC09> { [ l,            L,           colon,        NoSymbol     ] };
-    key <AC10> { [ NoSymbol,     NoSymbol,    semicolon,    NoSymbol     ] };
+    key <AC10> { [ F24,     NoSymbol,    semicolon,    NoSymbol     ] };
     key <AC11> { [ NoSymbol,     NoSymbol,    grave,        NoSymbol     ] };
     key <BKSL> { [ NoSymbol,     NoSymbol,    NoSymbol,     NoSymbol     ] };
     
@@ -55,9 +55,9 @@ xkb_symbols "basic" {
     key <AB05> { [ b,            B,           equal,        NoSymbol     ] };
     key <AB06> { [ n,            N,           less,         NoSymbol     ] };
     key <AB07> { [ m,            M,           greater,      NoSymbol     ] };       
-    key <AB08> { [ NoSymbol,     NoSymbol,    comma,        NoSymbol     ] };
-    key <AB09> { [ NoSymbol,     NoSymbol,    period,       NoSymbol     ] };
-    key <AB10> { [ NoSymbol,     NoSymbol,    question,     NoSymbol     ] };
+    key <AB08> { [ F23,     NoSymbol,    comma,        NoSymbol     ] };
+    key <AB09> { [ F22,     NoSymbol,    period,       NoSymbol     ] };
+    key <AB10> { [ F21,     NoSymbol,    question,     NoSymbol     ] };
     
     // Пробел
     key <SPCE> { [ space,        space,       space,        space        ] };
