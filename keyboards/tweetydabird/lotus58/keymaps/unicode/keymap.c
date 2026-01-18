@@ -26,15 +26,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM b_softsign_combo[] = {KC_COMM, KC_M, COMBO_END};
 const uint16_t PROGMEM ru_x_combo[] = {KC_O, KC_P, COMBO_END};
 const uint16_t PROGMEM ru_yo_combo[] = {KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM grv_combo[] = {RALT(KC_J), RALT(KC_K), COMBO_END};
-const uint16_t PROGMEM tild_combo[] = {RALT(KC_U), RALT(KC_I), COMBO_END};
+const uint16_t PROGMEM back_slash_combo[] = {RALT(KC_D), RALT(KC_F), COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(b_softsign_combo, KC_RBRC),
     COMBO(ru_x_combo, KC_LBRC),
     COMBO(ru_yo_combo, KC_QUOT),
-    COMBO(grv_combo, RALT(KC_QUOT)),
-    COMBO(tild_combo, RALT(KC_LBRC))
+    COMBO(back_slash_combo, RALT(KC_G))
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -60,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    XXXXXXX,
         XXXXXXX,  MT(MOD_LGUI, KC_A),    MT(MOD_LALT, KC_S),    MT(MOD_LCTL, KC_D),    MT(MOD_LSFT, KC_F),    LT(1, KC_G),                             LT(1, KC_H),    MT(MOD_RSFT, KC_J),    MT(MOD_LCTL, KC_K),    MT(MOD_LALT, KC_L),    MT(MOD_LGUI, KC_SCLN), XXXXXXX,
         XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX,        KC_MPLY, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, XXXXXXX,
-                                            XXXXXXX, KC_TAB,  MO(2),   KC_SPC,        KC_BSPC,  MO(2),   KC_ENT, XXXXXXX
+                                            KC_LCTL, KC_TAB,  MO(2),   KC_SPC,        KC_BSPC,  MO(2),   KC_ENT, XXXXXXX
     ),
 
     /*
@@ -68,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------.                    ,-----------------------------------------.
      * |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|    |XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|XXXXXX|
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
-     * |XXXXXX|   !  |   @  |   #  |   $  |   %  |------|    |------|   {  |  (  [~]  )  |   [  |   ]  |XXXXXX|
+     * |XXXXXX|   !  |   @  |   #  |   $  |   %  |------|    |------|   {  |  (   |   )  |   [  |   ]  |XXXXXX|
      * |------+------+------+------+------+------|      |    |      |------+------+------+------+------+------|
-     * |XXXXXX|   +  |   -  |   *  |   /  |   \  |------|    |------|   }  |  '  [`]  "  |   :  |   ;  |XXXXXX|
+     * |XXXXXX|   +  |   -  |  *  [\]  /  |   ~  |------|    |------|   }  |  '   |   "  |   :  |   ;  |XXXXXX|
      * |------+------+------+------+------+------|XXXXXX|    |XXXXXX|------+------+------+------+------+------|
-     * |XXXXXX|   №  |   |  |   &  |   _  |   =  |------|    |------|   <  |   >  |   ,  |   .  |   ?  |XXXXXX|
+     * |XXXXXX|   `  |   |  |   &  |   _  |   =  |------|    |------|   <  |   >  |   ,  |   .  |   ?  |XXXXXX|
      * `-----------------------------------------/       /     \      \-----------------------------------------'
      *                  |XXXXXX|XXXXXX|XXXXXX|XXXXXX| /       /       \      \ | DEL  | CAPS | ChngLng |XXXXXX|
      *                  |      |      |      |      |/       /         \      \|      |      |         |      |
@@ -81,8 +79,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT(
         XXXXXXX,  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,      XXXXXXX,        XXXXXXX, XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,       XXXXXXX,       XXXXXXX,
         XXXXXXX, RALT(KC_Q), RALT(KC_W),   RALT(KC_E), RALT(KC_R),  RALT(KC_T),                          RALT(KC_Y),  RALT(KC_U), RALT(KC_I), RALT(KC_O),  RALT(KC_P),  XXXXXXX,
-        XXXXXXX, RALT(KC_A), RALT(KC_S), RALT(KC_D), RALT(KC_F), RALT(KC_G),                          RALT(KC_H),  RALT(KC_J), RALT(KC_K), RALT(KC_L),  RALT(KC_SCLN),  XXXXXXX,
-        XXXXXXX, RALT(KC_Z),      RALT(KC_X), RALT(KC_C), RALT(KC_V), RALT(KC_B),      XXXXXXX,        XXXXXXX, RALT(KC_N), RALT(KC_M), RALT(KC_COMM), RALT(KC_DOT),   RALT(KC_SLSH),  XXXXXXX,
+        XXXXXXX, RALT(KC_A), RALT(KC_S), RALT(KC_D), RALT(KC_F), RALT(KC_LBRC),                          RALT(KC_H),  RALT(KC_J), RALT(KC_K), RALT(KC_L),  RALT(KC_SCLN),  XXXXXXX,
+        XXXXXXX, RALT(KC_QUOT), RALT(KC_X), RALT(KC_C), RALT(KC_V), RALT(KC_B),      XXXXXXX,        XXXXXXX, RALT(KC_N), RALT(KC_M), RALT(KC_COMM), RALT(KC_DOT),   RALT(KC_SLSH),  XXXXXXX,
                                             XXXXXXX,      XXXXXXX,      XXXXXXX,   XXXXXXX,                   XXXXXXX, XXXXXXX,   XXXXXXX,      XXXXXXX
     ),
 
