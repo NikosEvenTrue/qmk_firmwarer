@@ -58,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
         KC_F1, KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   XXXXXXX,        XXXXXXX, KC_F7, KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
         XXXXXXX,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    XXXXXXX,
-        XXXXXXX,  MT(MOD_LGUI, KC_A),    MT(MOD_LALT, KC_S),    MT(MOD_LCTL, KC_D),    MT(MOD_LSFT, KC_F),    KC_G,                             KC_H,    MT(MOD_RSFT, KC_J),    MT(MOD_LCTL, KC_K),    MT(MOD_LALT, KC_L),    MT(MOD_LGUI, KC_SCLN), XXXXXXX,
+        XXXXXXX,  MT(MOD_LGUI, KC_A),    MT(MOD_LALT, KC_S),    MT(MOD_LCTL, KC_D),    MT(MOD_LSFT, KC_F),    LT(1, KC_G),                             LT(1, KC_H),    MT(MOD_RSFT, KC_J),    MT(MOD_LCTL, KC_K),    MT(MOD_LALT, KC_L),    MT(MOD_LGUI, KC_SCLN), XXXXXXX,
         XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX,        KC_MPLY, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, XXXXXXX,
-                                            XXXXXXX, KC_TAB,  MO(1),   KC_SPC,        KC_BSPC,  MO(2),   KC_ENT, XXXXXXX
+                                            XXXXXXX, KC_TAB,  MO(2),   KC_SPC,        KC_BSPC,  MO(2),   KC_ENT, XXXXXXX
     ),
 
     /*
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, RALT(KC_Q), RALT(KC_W),   RALT(KC_E), RALT(KC_R),  RALT(KC_T),                          RALT(KC_Y),  RALT(KC_U), RALT(KC_I), RALT(KC_O),  RALT(KC_P),  XXXXXXX,
         XXXXXXX, RALT(KC_A), RALT(KC_S), RALT(KC_D), RALT(KC_F), RALT(KC_G),                          RALT(KC_H),  RALT(KC_J), RALT(KC_K), RALT(KC_L),  RALT(KC_SCLN),  XXXXXXX,
         XXXXXXX, RALT(KC_Z),      RALT(KC_X), RALT(KC_C), RALT(KC_V), RALT(KC_B),      XXXXXXX,        XXXXXXX, RALT(KC_N), RALT(KC_M), RALT(KC_COMM), RALT(KC_DOT),   RALT(KC_SLSH),  XXXXXXX,
-                                            XXXXXXX,      XXXXXXX,      XXXXXXX,   XXXXXXX,                   KC_DEL, KC_CAPS,   NIKO_CHNG_LNG,      XXXXXXX
+                                            XXXXXXX,      XXXXXXX,      XXXXXXX,   XXXXXXX,                   XXXXXXX, XXXXXXX,   XXXXXXX,      XXXXXXX
     ),
 
     /*
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_1, KC_2, KC_3, KC_4, KC_5,                          KC_6, KC_7, KC_8,  KC_9, KC_0,  XXXXXXX,
         XXXXXXX, MT(MOD_LGUI, XXXXXXX), MT(MOD_LALT, XXXXXXX), MT(MOD_LCTL, XXXXXXX),  MT(MOD_LSFT, XXXXXXX), XXXXXXX,                          KC_APP, MT(MOD_RSFT, KC_LEFT), MT(MOD_LCTL, KC_RGHT), MT(MOD_LALT, KC_DOWN), MT(MOD_LGUI, KC_UP),   XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, KC_HOME, KC_END,  KC_PGDN, KC_PGUP, XXXXXXX,
-                                            XXXXXXX, KC_ESC,  MO(3),   KC_SPC,        XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX
+                                            XXXXXXX, KC_ESC,  MO(3),   KC_SPC,        KC_BSPC, KC_CAPS, NIKO_CHNG_LNG,  XXXXXXX
     ),
 
     /*
