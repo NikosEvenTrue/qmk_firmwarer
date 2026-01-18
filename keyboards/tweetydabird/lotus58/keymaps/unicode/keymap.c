@@ -37,6 +37,14 @@ combo_t key_combos[] = {
     COMBO(tild_combo, RALT(KC_LBRC))
 };
 
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] = LAYOUT(
+    'L','L','L','L','L','L','*',    '*','R','R','R','R','R','R',  // F-клавиши
+    '*','L','L','L','L','L',              'R','R','R','R','R','*',  // QWERTY ряд
+    '*','L','L','L','L','L',              'R','R','R','R','R','*',  // Home row
+    '*','L','L','L','L','L','*',    '*','R','R','R','R','R','*',  // Нижний ряд
+                    '*','L','L','L',    'R','R','R','*'             // Thumb cluster
+);
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * Layer 0 - Base Layer
